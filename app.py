@@ -27,7 +27,7 @@ solution = str(solution).upper()
 spoiler = f"Today's Wordle solution ({today}) is {solution}"
 logging.info(spoiler)
 
-client = boto3.client('ses', aws_access_key_id=env.SES_KEY, aws_secret_access_key=env.SES_SECRET)
+client = boto3.client('ses', aws_access_key_id=env.SES_KEY, aws_secret_access_key=env.SES_SECRET, region_name='us-east-1')
 client.send_email(
     Destination = {'ToAddresses':[env.MAILTO]},
     Message = {
