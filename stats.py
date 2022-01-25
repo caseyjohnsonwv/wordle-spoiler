@@ -43,6 +43,8 @@ print('\n')
 # assign a score to every valid guess based on the wap table
 with open('guesses.txt', 'r') as f:
     guesses = [word.strip() for word in f.readlines()]
+guesses.extend(solutions)
+guesses = list(set(guesses))
 
 print(f"Analyzing {len(guesses)} valid guesses...")
 scores = {word:0 for word in guesses}
