@@ -1,4 +1,7 @@
 from string import ascii_lowercase
+import sys
+
+TOP_WORDS_COUNT = int(sys.argv[1]) if len(sys.argv) > 1 else 10
 
 # track position of each letter in solutions
 position_frequency = {letter:[0]*5 for letter in ascii_lowercase}
@@ -47,7 +50,7 @@ for word in scores.keys():
     for i,letter in enumerate(word):
         scores[word] += weighted_appearance_probabilities[letter][i]
 
-# print top 10 guesses
-for word,score in sorted(scores.items(), key=lambda pair:pair[1], reverse=True)[:10]:
+# print top N guesses
+for word,score in sorted(scores.items(), key=lambda pair:pair[1], reverse=True)[:TOP_WORDS_COUNT]:
     print(f"{word.upper()} ({score:.2f})")
 
